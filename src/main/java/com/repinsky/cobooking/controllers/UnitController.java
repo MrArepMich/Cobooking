@@ -52,4 +52,13 @@ public class UnitController {
         long availableUnits = unitStatisticsService.getAvailableUnits();
         return ResponseEntity.ok(availableUnits);
     }
+
+    /*
+     In fact, data such as user email should not be passed in the URL,
+     but I think it is possible here, since the project is a test one.
+    */
+    @DeleteMapping
+    public ResponseEntity<String> deleteUnit(@RequestParam String email, @RequestParam Long unitId) {
+        return ResponseEntity.ok(unitService.deleteUnit(email, unitId));
+    }
 }

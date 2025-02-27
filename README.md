@@ -29,5 +29,5 @@ CoBooking – это сервис бронирования, реализован
 ### 1. Клонирование репозитория
 
 ```sh
-git clone <URL_РЕПОЗИТОРИЯ>
-cd <НАЗВАНИЕ_ПРОЕКТА>
+git clone (https://github.com/Repinskie/Cobooking.git)
+cd Cobooking

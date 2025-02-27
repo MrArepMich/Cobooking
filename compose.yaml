@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: cobooking-backend
+    ports:
+      - "8500:8500"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/cobooking_db
+      SPRING_DATASOURCE_USERNAME: cobooking
+      SPRING_DATASOURCE_PASSWORD: cobooking2025
+    networks:
+      - cobooking
+  postgres:
+    image: postgres:17-alpine
+    container_name: cobooking-postgres
+    environment:
+      POSTGRES_DB: cobooking_db
+      POSTGRES_PASSWORD: cobooking2025
+      POSTGRES_USER: cobooking
+    ports:
+      - "5432:5432"
+    networks:
+      - cobooking
+  redis:
+    image: redis:latest
+    container_name: cobooking-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - cobooking
+
+volumes:
+  pgdata:
+
+networks:
+  cobooking:
+    driver: bridge

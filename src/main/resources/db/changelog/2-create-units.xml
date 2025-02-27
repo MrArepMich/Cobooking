@@ -1,0 +1,35 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="2" author="liquibase">
+        <createTable tableName="units">
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="number_of_rooms" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="floor" type="INT">
+                <constraints nullable="false"/>w
+            </column>
+            <column name="cost" type="NUMERIC(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_of_accommodation" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_units_user"
+                             references="users(id)"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_units_user_id" tableName="units">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

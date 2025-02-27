@@ -1,0 +1,38 @@
+server:
+  port: 8500
+  servlet:
+    context-path: /cobooking
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+spring:
+  application:
+    name: cobooking
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/cobooking_db
+    username: cobooking
+    password: cobooking2025
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+booking:
+  expiration:
+    minutes: 4
+  unit:
+    minCost: "50"
+

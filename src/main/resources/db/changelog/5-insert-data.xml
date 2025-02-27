@@ -1,0 +1,131 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="5" author="liquibase">
+        <!-- Inserting Users -->
+        <insert tableName="users">
+            <column name="username" value="user1"/>
+            <column name="email" value="user1@example.com"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="user2"/>
+            <column name="email" value="user2@example.com"/>
+        </insert>
+
+        <!-- Insert 10 units -->
+        <insert tableName="units">
+            <column name="description" value="Cozy Apartment"/>
+            <column name="number_of_rooms" value="2"/>
+            <column name="floor" value="3"/>
+            <column name="cost" value="500.00"/>
+            <column name="type_of_accommodation" value="APARTMENTS"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Luxury Villa"/>
+            <column name="number_of_rooms" value="5"/>
+            <column name="floor" value="1"/>
+            <column name="cost" value="2000.00"/>
+            <column name="type_of_accommodation" value="HOME"/>
+            <column name="user_id" value="2"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Small Studio"/>
+            <column name="number_of_rooms" value="1"/>
+            <column name="floor" value="4"/>
+            <column name="cost" value="300.00"/>
+            <column name="type_of_accommodation" value="FLAT"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Spacious Loft"/>
+            <column name="number_of_rooms" value="3"/>
+            <column name="floor" value="2"/>
+            <column name="cost" value="1200.00"/>
+            <column name="type_of_accommodation" value="FLAT"/>
+            <column name="user_id" value="2"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Penthouse Suite"/>
+            <column name="number_of_rooms" value="4"/>
+            <column name="floor" value="10"/>
+            <column name="cost" value="5000.00"/>
+            <column name="type_of_accommodation" value="HOME"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Country House"/>
+            <column name="number_of_rooms" value="6"/>
+            <column name="floor" value="1"/>
+            <column name="cost" value="3500.00"/>
+            <column name="type_of_accommodation" value="HOME"/>
+            <column name="user_id" value="2"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Business Apartment"/>
+            <column name="number_of_rooms" value="2"/>
+            <column name="floor" value="5"/>
+            <column name="cost" value="800.00"/>
+            <column name="type_of_accommodation" value="APARTMENTS"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Seaside Bungalow"/>
+            <column name="number_of_rooms" value="2"/>
+            <column name="floor" value="1"/>
+            <column name="cost" value="1500.00"/>
+            <column name="type_of_accommodation" value="HOME"/>
+            <column name="user_id" value="2"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Budget Room"/>
+            <column name="number_of_rooms" value="1"/>
+            <column name="floor" value="2"/>
+            <column name="cost" value="100.00"/>
+            <column name="type_of_accommodation" value="FLAT"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="units">
+            <column name="description" value="Luxury Chalet"/>
+            <column name="number_of_rooms" value="5"/>
+            <column name="floor" value="2"/>
+            <column name="cost" value="4500.00"/>
+            <column name="type_of_accommodation" value="APARTMENTS"/>
+            <column name="user_id" value="2"/>
+        </insert>
+
+        <!-- Inserting Reservations -->
+        <insert tableName="bookings">
+            <column name="user_id" value="1"/>
+            <column name="unit_id" value="1"/>
+            <column name="booking_start" value="2025-03-01T14:00:00Z"/>
+            <column name="booking_end" value="2025-03-05T10:00:00Z"/>
+            <column name="created_at" value="2025-03-01T14:00:00Z"/>
+            <column name="status" value="NEW"/>
+        </insert>
+        <insert tableName="bookings">
+            <column name="user_id" value="2"/>
+            <column name="unit_id" value="2"/>
+            <column name="booking_start" value="2025-03-10T16:00:00Z"/>
+            <column name="booking_end" value="2025-03-15T12:00:00Z"/>
+            <column name="created_at" value="2025-03-10T16:00:00Z"/>
+            <column name="status" value="NEW"/>
+        </insert>
+
+        <!-- Inserting payments -->
+        <insert tableName="payments">
+            <column name="booking_id" value="1"/>
+            <column name="amount" value="500.00"/>
+            <column name="payment_time" value="2025-02-28T12:00:00Z"/>
+        </insert>
+        <insert tableName="payments">
+            <column name="booking_id" value="2"/>
+            <column name="amount" value="2000.00"/>
+            <column name="payment_time" value="2025-03-09T15:00:00Z"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

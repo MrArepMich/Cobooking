@@ -77,4 +77,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleBookingNotFound(BookingNotFoundException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
+
+    @ExceptionHandler(UnauthorizedActionException.class)
+    public ResponseEntity<String> handleUnauthorizedAction(UnauthorizedActionException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+    }
 }

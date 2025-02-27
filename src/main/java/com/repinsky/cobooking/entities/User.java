@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,13 @@ public class UserEntity {
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UnitEntity> unitEntities = new ArrayList<>();
+    private List<Unit> units = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BookingEntity> bookingEntities = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
 }

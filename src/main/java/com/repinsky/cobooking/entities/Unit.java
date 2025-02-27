@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UnitEntity {
+public class Unit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +38,17 @@ public class UnitEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    private User user;
 
     @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
-    private List<BookingEntity> bookingEntities = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
+
+    public Unit(String Description, int numberOfRooms, int floor, BigDecimal cost, AccommodationType typeOfAccommodation, User user) {
+        this.description = Description;
+        this.numberOfRooms = numberOfRooms;
+        this.floor = floor;
+        this.cost = cost;
+        this.typeOfAccommodation = typeOfAccommodation;
+        this.user = user;
+    }
 }

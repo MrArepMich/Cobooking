@@ -1,25 +1,19 @@
 package com.repinsky.cobooking.criteria;
 
 import com.repinsky.cobooking.dtos.UnitSearchCriteriaDto;
-import com.repinsky.cobooking.entities.BookingEntity;
-import com.repinsky.cobooking.entities.UnitEntity;
+import com.repinsky.cobooking.entities.Booking;
+import com.repinsky.cobooking.entities.Unit;
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnitEntityCriteria {
-    private UnitEntityCriteria() {}
+public class UnitCriteria {
+    private UnitCriteria() {}
 
-    /**
-     * Builds a specification for dynamically searching UnitEntity by given criteria.
-     *
-     * @param criteria object with filter parameters
-     * @return specification for use in repository
-     */
-    public static Specification<UnitEntity> filterByCriteria(UnitSearchCriteriaDto criteria) {
-        return (Root<UnitEntity> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    public static Specification<Unit> filterByCriteria(UnitSearchCriteriaDto criteria) {
+        return (Root<Unit> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
             // Filter by Accommodation type
@@ -50,7 +44,7 @@ public class UnitEntityCriteria {
             if (criteria.getBookingStart() != null && criteria.getBookingEnd() != null) {
                 query.distinct(true);
 
-                Join<UnitEntity, BookingEntity> bookings = root.join("bookingEntities", JoinType.LEFT);
+                Join<Unit, Booking> bookings = root.join("bookings", JoinType.LEFT);
 
                 // A reservation overlaps if its start is earlier than availableTo,
                 // and its end is later than availableFrom.

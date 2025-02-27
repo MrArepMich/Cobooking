@@ -1,9 +1,9 @@
 package com.repinsky.cobooking.converters;
 
 import com.repinsky.cobooking.dtos.BookingResponseDto;
-import com.repinsky.cobooking.entities.BookingEntity;
-import com.repinsky.cobooking.entities.UnitEntity;
-import com.repinsky.cobooking.entities.UserEntity;
+import com.repinsky.cobooking.entities.Booking;
+import com.repinsky.cobooking.entities.Unit;
+import com.repinsky.cobooking.entities.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -20,13 +20,13 @@ class BookingConverterTest {
     private final BookingConverter bookingConverter = new BookingConverter();
 
     @Mock
-    private BookingEntity bookingEntity;
+    private Booking booking;
 
     @Mock
-    private UserEntity userEntity;
+    private User user;
 
     @Mock
-    private UnitEntity unitEntity;
+    private Unit unit;
 
     @Test
     void entityToDto_ShouldMapAllFieldsCorrectly() {
@@ -34,15 +34,15 @@ class BookingConverterTest {
         Instant startTime = Instant.parse("2025-03-27T16:18:26.168Z");
         Instant endTime = Instant.parse("2025-04-27T16:18:26.168Z");
 
-        when(bookingEntity.getId()).thenReturn(1L);
-        when(bookingEntity.getUser()).thenReturn(userEntity);
-        when(userEntity.getEmail()).thenReturn("user@example.com");
-        when(bookingEntity.getUnit()).thenReturn(unitEntity);
-        when(unitEntity.getId()).thenReturn(100L);
-        when(bookingEntity.getBookingStart()).thenReturn(startTime);
-        when(bookingEntity.getBookingEnd()).thenReturn(endTime);
+        when(booking.getId()).thenReturn(1L);
+        when(booking.getUser()).thenReturn(user);
+        when(user.getEmail()).thenReturn("user@example.com");
+        when(booking.getUnit()).thenReturn(unit);
+        when(unit.getId()).thenReturn(100L);
+        when(booking.getBookingStart()).thenReturn(startTime);
+        when(booking.getBookingEnd()).thenReturn(endTime);
 
-        BookingResponseDto result = bookingConverter.entityToDto(bookingEntity);
+        BookingResponseDto result = bookingConverter.entityToDto(booking);
 
         assertThat(result)
             .usingRecursiveComparison()

@@ -1,7 +1,7 @@
 package com.repinsky.cobooking.services;
 
 import com.repinsky.cobooking.dtos.RegisterDto;
-import com.repinsky.cobooking.entities.UserEntity;
+import com.repinsky.cobooking.entities.User;
 import com.repinsky.cobooking.exceptions.UserAlreadyExistsException;
 import com.repinsky.cobooking.repositories.UserRepository;
 import com.repinsky.cobooking.service.UserService;
@@ -41,7 +41,7 @@ class UserServiceTest {
 
         assertEquals("User registered successfully", result);
 
-        verify(userRepository, times(1)).save(any(UserEntity.class));
+        verify(userRepository, times(1)).save(any(User.class));
     }
 
     @Test
@@ -54,6 +54,6 @@ class UserServiceTest {
         );
 
         assertEquals("User with email test@example.com already exists", exception.getMessage());
-        verify(userRepository, never()).save(any(UserEntity.class));
+        verify(userRepository, never()).save(any(User.class));
     }
 }

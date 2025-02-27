@@ -1,7 +1,7 @@
 package com.repinsky.cobooking.initializer;
 
-import com.repinsky.cobooking.entities.UnitEntity;
-import com.repinsky.cobooking.entities.UserEntity;
+import com.repinsky.cobooking.entities.Unit;
+import com.repinsky.cobooking.entities.User;
 import com.repinsky.cobooking.enums.AccommodationType;
 import com.repinsky.cobooking.repositories.UnitRepository;
 import com.repinsky.cobooking.repositories.UserRepository;
@@ -25,19 +25,19 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        UserEntity defaultUser = userRepository.findByEmail("default@user.com")
+        User defaultUser = userRepository.findByEmail("default@user.com")
                 .orElseGet(() -> {
-                    UserEntity user = new UserEntity();
+                    User user = new User();
                     user.setUsername("defaultUser");
                     user.setEmail("default@user.com");
                     return userRepository.save(user);
                 });
 
         long currentCount = unitRepository.count();
-        if (currentCount < 90) {
-            int unitsToCreate = 90 - (int) currentCount;
+        if (currentCount < 100) {
+            int unitsToCreate = 100 - (int) currentCount;
             for (int i = 0; i < unitsToCreate; i++) {
-                UnitEntity unit = new UnitEntity();
+                Unit unit = new Unit();
                 unit.setDescription("Unit " + (currentCount + i + 1));
                 // Random number of rooms from 1 to 5
                 unit.setNumberOfRooms(RANDOM.nextInt(5) + 1);

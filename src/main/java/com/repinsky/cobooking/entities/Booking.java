@@ -1,6 +1,5 @@
 package com.repinsky.cobooking.entities;
 
-import com.repinsky.cobooking.enums.BookingStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +11,7 @@ import java.time.Instant;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingEntity {
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +19,11 @@ public class BookingEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unit_id", nullable = false)
-    private UnitEntity unit;
+    private Unit unit;
 
     @Column(name = "booking_start", nullable = false)
     private Instant bookingStart;
@@ -35,7 +34,10 @@ public class BookingEntity {
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private BookingStatus status = BookingStatus.NEW;
+    public Booking(User user, Unit unit, Instant bookingStart, Instant bookingEnd) {
+        this.user = user;
+        this.unit = unit;
+        this.bookingStart = bookingStart;
+        this.bookingEnd = bookingEnd;
+    }
 }

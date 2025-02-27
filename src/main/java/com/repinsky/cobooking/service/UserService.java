@@ -1,7 +1,7 @@
 package com.repinsky.cobooking.service;
 
 import com.repinsky.cobooking.dtos.RegisterDto;
-import com.repinsky.cobooking.entities.UserEntity;
+import com.repinsky.cobooking.entities.User;
 import com.repinsky.cobooking.exceptions.UserAlreadyExistsException;
 import com.repinsky.cobooking.repositories.UserRepository;
 import jakarta.transaction.Transactional;
@@ -20,10 +20,8 @@ public class UserService {
             throw new UserAlreadyExistsException(String.format("User with email %s already exists", dto.getEmail()));
         }
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUsername(dto.getUsername());
-        userEntity.setEmail(dto.getEmail());
-        userRepository.save(userEntity);
+        User user = new User(dto.getUsername(), dto.getEmail());
+        userRepository.save(user);
 
         return "User registered successfully";
     }

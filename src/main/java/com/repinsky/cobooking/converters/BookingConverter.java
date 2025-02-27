@@ -1,7 +1,7 @@
 package com.repinsky.cobooking.converters;
 
 import com.repinsky.cobooking.dtos.BookingResponseDto;
-import com.repinsky.cobooking.entities.BookingEntity;
+import com.repinsky.cobooking.entities.Booking;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class BookingConverter {
-    public BookingResponseDto entityToDto(BookingEntity bookingEntity) {
+    public BookingResponseDto entityToDto(Booking booking) {
         return new BookingResponseDto(
-                bookingEntity.getId(),
-                bookingEntity.getUser().getEmail(),
-                bookingEntity.getUnit().getId(),
-                bookingEntity.getBookingStart(),
-                bookingEntity.getBookingEnd()
+                booking.getId(),
+                booking.getUser().getEmail(),
+                booking.getUnit().getId(),
+                booking.getBookingStart(),
+                booking.getBookingEnd()
         );
     }
 }

@@ -3,7 +3,6 @@ package com.repinsky.cobooking.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
@@ -12,18 +11,20 @@ import java.time.Instant;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentEntity {
+public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "booking_id", nullable = false, unique = true)
-    private BookingEntity booking;
-
-    @Column(name = "amount", nullable = false)
-    private BigDecimal amount;
+    private Booking booking;
 
     @Column(name = "payment_time", nullable = false)
     private Instant paymentTime;
+
+    public Payment(Booking booking, Instant paymentTime) {
+        this.booking = booking;
+        this.paymentTime = paymentTime;
+    }
 }

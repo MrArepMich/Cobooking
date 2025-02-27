@@ -31,3 +31,22 @@ CoBooking – это сервис бронирования, реализован
 ```sh
 git clone https://github.com/Repinskie/Cobooking.git
 cd Cobooking
+```
+### 2. Сборка проекта
+
+```sh
+./gradlew build
+```
+
+### 3. Запуск через Docker Compose
+```sh
+docker-compose up --build
+```
+
+### 4. Тестирование API
+ - Открыть Swagger UI:
+     - Swagger UI
+       ```sh
+       http://localhost:8500/cobooking/swagger-ui/index.html
+       ```
+     - Или использовать Postman.

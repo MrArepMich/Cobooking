@@ -1,11 +1,8 @@
 package com.repinsky.cobooking.service;
 
-import com.repinsky.cobooking.converters.UnitConverter;
 import com.repinsky.cobooking.dtos.RegisterDto;
-import com.repinsky.cobooking.dtos.UnitResponseDto;
 import com.repinsky.cobooking.entities.UserEntity;
 import com.repinsky.cobooking.exceptions.UserAlreadyExistsException;
-import com.repinsky.cobooking.exceptions.UserNotFoundException;
 import com.repinsky.cobooking.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
